@@ -40,6 +40,23 @@
       margin-top: 20px;
       font-size: 16px;
     }
+    .footer {
+      margin-top: 50px;
+      padding: 20px;
+      background-color: white;
+      border: 2px solid black;
+      border-radius: 10px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .footer h3 {
+      margin-top: 0;
+      font-size: 18px;
+      color: #333;
+    }
   </style>
 </head>
 <body>
@@ -49,6 +66,12 @@
     <input type="text" id="name" placeholder="請輸入姓名，例如：陳xx">
     <button onclick="lookupOrder()">查詢</button>
     <div id="result"></div>
+  </div>
+
+  <div class="footer">
+    <h3>設計與開發資訊</h3>
+    <p>本系統由 夜四資管三甲 班級開發，供同學查詢聚餐點餐資訊使用。</p>
+    <p>如有問題，請聯絡班代或負責人協助處理。</p>
   </div>
 
   <script>
