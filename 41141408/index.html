@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>飲料訂單查詢系統</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background-color: #f5f5f5;
+    }
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>查詢你的訂餐資訊</h2>
+    <input type="text" id="studentId" placeholder="請輸入學號，例如：41141403">
+    <input type="text" id="name" placeholder="請輸入姓名，例如：許瑋宸">
+    <button onclick="lookupOrder()">查詢</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    const data = [
+      { id: "41141403", name: "許瑋宸", meal: "超值全餐：雙層麥香鷄套餐$162 + 配餐$69 總共$231", drink: "可樂(中)" },
+      { id: "41141405", name: "李家榤", meal: "超值全餐：雙層麥香鷄套餐$162 + 配餐$69 總共$231", drink: "檸檬風味紅茶(冰)(中)" },
+      { id: "41141406", name: "江憶甄", meal: "極選系列套餐：帕瑪森安格斯牛肉堡套餐$211 + 經典大薯", drink: "可樂(中)" },
+      { id: "41141407", name: "陳彥融", meal: "超值全餐：雙層麥香鷄套餐$162 + 配餐$69 總共$231", drink: "可樂(中)" },
+    ]; // 範例資料，可自行擴充
+
+    function lookupOrder() {
+      const id = document.getElementById('studentId').value.trim();
+      const name = document.getElementById('name').value.trim();
+      const resultDiv = document.getElementById('result');
+      
+      const student = data.find(entry => entry.id === id && entry.name === name);
+
+      if (student) {
+        resultDiv.innerHTML = `
+          <p><strong>姓名：</strong> ${student.name}</p>
+          <p><strong>學號：</strong> ${student.id}</p>
+          <p><strong>套餐內容：</strong> ${student.meal}</p>
+          <p><strong>飲料：</strong> ${student.drink}</p>
+        `;
+      } else {
+        resultDiv.innerHTML = '<p style="color:red;">查無資料，請確認學號與姓名是否正確。</p>';
+      }
+    }
+  </script>
+</body>
+</html>
